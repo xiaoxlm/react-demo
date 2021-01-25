@@ -65,12 +65,14 @@ class LikeList extends Component {
             data: dataSource, // 1. 初始列表数据
             loadTimes: 1,    // 2. 当前加载次数
         }
+
         this.removeListener = false; // 15. 标记对scroll的监听函数是否被移除
     }
 
     render() {
-        const {data, loadTimes} = this.state;
-
+        const {loadTimes} = this.state;
+        let data = this.props.data
+        // console.log("props.data:", this.props.data)
         return (
             // 8. 获取likeList最外层的div的ref
             <div ref={this.myRef} className="likeList">
@@ -98,8 +100,16 @@ class LikeList extends Component {
     }
 
     componentDidMount() {
+        if (this.props.pageCount < 3) {
+            document.addEventListener("scroll", this.handleScroll);
+        } else {
+            this.removeListener = true
+        }
+        if (this.props.pageCount === 0) {
+            this.props.fetchData()
+        }
         // 5. 添加对滚动事件的监听，处理函数是handleScroll
-        document.addEventListener("scroll", this.handleScroll);
+        // document.addEventListener("scroll", this.handleScroll);
     }
 
     componentDidUpdate() {

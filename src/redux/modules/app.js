@@ -17,6 +17,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     const { type, error } = action
     if (type === types.CLEAR_ERROR) {
+        console.log(123)
         return {...state, error:null}
     } else if (error) {
         // 通过判断action对象当中是否含有error属性来进行判断

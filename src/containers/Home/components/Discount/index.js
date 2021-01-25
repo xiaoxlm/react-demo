@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import "./style.css"
 
-const dataSource = [
-    {
-        id: 1,
-        url: "http://www.baidu.com",
-        picture: "https://h5.dianping.com/app/h5-ranklist-static/list_nearby.html?collectionId=227&source=weixinM",
-        shop: "shop",
-        currentPrice: "currentPrice",
-        oldPrice: "oldPrice"
-    }
-]
+// const dataSource = [
+//     {
+//         id: 1,
+//         url: "http://www.baidu.com",
+//         picture: "https://h5.dianping.com/app/h5-ranklist-static/list_nearby.html?collectionId=227&source=weixinM",
+//         shop: "shop",
+//         currentPrice: "currentPrice",
+//         oldPrice: "oldPrice"
+//     }
+// ]
 
 class Discount extends Component {
     render() {
-        const data = dataSource;
+        const data = this.props.data
         return (
             <div className="discount">
                 <a className="discount__header">

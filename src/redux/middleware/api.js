@@ -5,8 +5,10 @@ export const FETCH_DATA = "FETCH DATA"
 
 export default store => next => action => {
     const callAPI = action[FETCH_DATA]
-    if (typeof callAPI === undefined) {
+    if ((typeof callAPI === undefined) || (callAPI === undefined) || !callAPI){
+        console.log(1)
         // 说明不是请求数据的action，放过处理
+        // return next, 就是直接返回被reducer处理后的reducer对象
         return next(action)
     }
 
@@ -60,7 +62,7 @@ const normalizeData = (data, schema) => {
     const {id, name} = schema
     let kvObj = {} // 用于存储扁平化数据的变量
     let ids = [] // 保存每个数据当中的id，维护有序性
-    if(Array.isArray(data)) {
+    if (Array.isArray(data)) {
         data.forEach(item => {
             kvObj[item[id]] = item
             ids.push(item[id])
@@ -69,6 +71,7 @@ const normalizeData = (data, schema) => {
         kvObj[data[id]] = data
         ids.push(data[id])
     }
+
     return {
         [name]: kvObj,
         ids

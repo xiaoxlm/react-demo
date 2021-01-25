@@ -1,0 +1,24 @@
+[
+  {
+    "id": "p-1",
+    "shopIds": ["s-1","s-1","s-1"],
+    "shop": "院落创意菜",
+    "tag": "免预约",
+    "picture": "https://p0.meituan.net/deal/e6864ed9ce87966af11d922d5ef7350532676.jpg.webp@180w_180h_1e_1c_1l_80q|watermark=0",
+    "product": "「3店通用」百香果（冷饮）1扎",
+    "currentPrice": 19.9,
+    "oldPrice": 48,
+    "saleDesc": "已售6034"
+  },
+  {
+    "id": "p-2",
+    "shopIds": ["s-2"],
+    "shop": "正一味",
+    "tag": "免预约",
+    "picture": "https://p0.meituan.net/deal/4d32b2d9704fda15aeb5b4dc1d4852e2328759.jpg%40180w_180h_1e_1c_1l_80q%7Cwatermark%3D0",
+    "product": "[5店通用] 肥牛石锅拌饭+鸡蛋羹1份",
+    "currentPrice": 29,
+    "oldPrice": 41,
+    "saleDesc": "已售15500"
+  }
+]
