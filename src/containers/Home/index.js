@@ -5,6 +5,7 @@ import Category from "./components/Category";
 import Headline from "./components/Headline";
 import Discount from "./components/Discount";
 import LikeList from "./components/LikeList";
+import HomeHeader from "./components/HomeHeader";
 
 import {
     actions as homeActions,
@@ -18,6 +19,7 @@ class Home extends Component {
         const { likes, discounts, pageCount } = this.props
         return (
             <div>
+                <HomeHeader />
                 <Category />
                 <Headline />
                 <Discount data={discounts}/>

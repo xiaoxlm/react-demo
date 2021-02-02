@@ -8,7 +8,8 @@ import Home from '../Home'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import HomeHeader from "../Home/components/HomeHeader";
+
+import ProductDetail from "../ProductDetail";
 
 class App extends React.Component {
     render() {
@@ -17,13 +18,10 @@ class App extends React.Component {
             <div className="App">
                 <Router>
                     <Switch>
-                        <Route path="/" component={HomeHeader} />
-
+                        <Route path="/detail/:id" component={ProductDetail} />
                         <Route path="/" component={Home} />
                     </Switch>
                 </Router>
-
-                <Home />
                 {  error ? <ErrorToast msg={error} clearError={clearError}/> : null}
             </div>
         );
