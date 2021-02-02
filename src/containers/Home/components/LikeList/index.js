@@ -61,17 +61,17 @@ class LikeList extends Component {
     constructor(props) {
         super(props)
         this.myRef = React.createRef(); // 7 .使用react中的ref属性
-        this.state = {
-            data: dataSource, // 1. 初始列表数据
-            loadTimes: 1,    // 2. 当前加载次数
-        }
+        // this.state = {
+        //     data: dataSource, // 1. 初始列表数据
+        //     loadTimes: 1,    // 2. 当前加载次数
+        // }
 
         this.removeListener = false; // 15. 标记对scroll的监听函数是否被移除
     }
 
     render() {
-        const {loadTimes} = this.state;
-        let data = this.props.data
+        const { data, pageCount } = this.props;
+        // const data = this.props.data
         // console.log("props.data:", this.props.data)
         return (
             // 8. 获取likeList最外层的div的ref
@@ -85,7 +85,7 @@ class LikeList extends Component {
                     }
                 </div>
                 {
-                    loadTimes < 3 ?
+                    pageCount < 3 ?
                         ( // 3. 当加载次数小于3的时候，我们会自动加载数据，这里展示一个加载的组件
                             <Loading/>
                         ):
@@ -114,7 +114,7 @@ class LikeList extends Component {
 
     componentDidUpdate() {
         // 14. 如果已经自动加载了两次，就应该解除对scroll的监听
-        if(this.state.loadTimes >= 3 && !this.removeListener) {
+        if(this.props.pageCount >= 3 && !this.removeListener) {
             document.removeEventListener("scroll", this.handleScroll);
             this.removeListener = true;
         }
@@ -139,14 +139,17 @@ class LikeList extends Component {
         const likeListHeight = this.myRef.current.offsetHeight;
         // 13. 滑动距离如果超过了我们计算出来的滑动距离，说明已经滑动到当前LikeList的底部了
         if(scrollTop >= likeListHeight + likeListTop - screenHeight) {
-            const newData = this.state.data.concat(dataSource);
-            const newLoadTimes = this.state.loadTimes + 1;
             setTimeout(() => {
-                this.setState({
-                    data: newData,
-                    loadTimes: newLoadTimes
-                })
-            }, 1000)
+                this.props.fetchData()
+            }, 500)
+            // const newData = this.state.data.concat(dataSource);
+            // const newLoadTimes = this.state.loadTimes + 1;
+            // setTimeout(() => {
+            //     this.setState({
+            //         data: newData,
+            //         loadTimes: newLoadTimes
+            //     })
+            // }, 500)
         }
     }
 }
