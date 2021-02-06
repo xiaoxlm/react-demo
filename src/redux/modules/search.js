@@ -28,7 +28,7 @@ export const actions = {
     loadRelatedKeywords: (text) => {
         return (dispatch, getState) => {
             // 简单的判断当前是否有缓存
-            const { relatedKeywords } = getState.search;
+            const { relatedKeywords } = getState().search;
             if(relatedKeywords[text]){
                 return null
             }
@@ -209,14 +209,13 @@ export default reducer;
 
 // selectors
 export const getPopularKeywords = state => {
+    // console.log("getPopularKeywords state:", state)
     return state.search.popularKeywords.ids.map(id => {
         return getKeywordById(state, id)
     })
 }
 
 export const getRelatedKeywords = state => {
-    // console.log("state:", state)
-    // console.log("state.search:", state.search)
     const text = state.search.inputText;
     if(!text || text.trim().length === 0) {
         return [];

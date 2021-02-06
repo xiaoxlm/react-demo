@@ -86,7 +86,6 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    console.log("state:", state)
     return {
         relatedKeywords: getRelatedKeywords(state),
         inputText: getInputText(state),
