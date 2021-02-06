@@ -49,8 +49,8 @@ class SearchBox extends Component {
         this.props.onClear();
     }
 
-    handleCancel = (item) => {
-        this.props.onClickItem(item)
+    handleCancel = () => {
+        this.props.onCancel();
     }
 }
 
