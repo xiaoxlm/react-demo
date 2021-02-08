@@ -3,13 +3,15 @@ import "./style.css"
 
 class LoginForm extends Component {
     render() {
+        const { username, password, onChange, onSubmit } = this.props
         return (
             <div className="loginForm">
                 <div className="loginForm__inputContainer">
                     <div className="loginForm__row">
                         <label className="loginForm__mobileLabel">86</label>
                         <input className="loginForm__input"
-                               name="username"
+                               name="username" value={username}
+                               onChange={onChange}
                         ></input>
                     </div>
                     <div className="loginForm__row">
@@ -17,11 +19,13 @@ class LoginForm extends Component {
                         <input className="loginForm__input"
                                name="password"
                                type="password"
+                               value={password}
+                               onChange={onChange}
                         ></input>
                     </div>
                 </div>
                 <div className="loginForm__btnContainer">
-                    <button className="loginForm__btn">
+                    <button className="loginForm__btn" onClick={onSubmit}>
                         登录
                     </button>
                 </div>
