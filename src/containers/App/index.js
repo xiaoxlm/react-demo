@@ -20,7 +20,7 @@ class App extends React.Component {
         const { error, appActions: { clearError }} = this.props
         return (
             <div className="App">
-                <Router>
+                <Router basename="/dianping">
                     <Switch>
                         <Route path="/login" component={Login} />
                         <PrivateRoute path="/user" component={User} />
